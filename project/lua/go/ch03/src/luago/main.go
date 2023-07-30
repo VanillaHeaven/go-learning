@@ -53,6 +53,7 @@ func printCode(f *binchunk.Prototype) {
 		if len(f.LineInfo) > 0 {
 			line = fmt.Sprintf("%d", f.LineInfo[pc])
 		}
+		// 解析指令
 		i := Instruction(c)
 		fmt.Printf("\t%d\t[%s]\t%s \t", pc+1, line, i.OpName())
 		printOperands(i)

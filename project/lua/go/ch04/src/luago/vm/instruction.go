@@ -5,21 +5,10 @@ const MAXARG_sBx = MAXARG_Bx >> 1
 
 type Instruction uint32
 
-/*
- * 前6字节用于标识指令
- */
 func (self Instruction) Opcode() int {
 	return int(self & 0x3f)
 }
 
-/*
- * ABC, ABx, AsBx, Ax
- * 用于标识指令的参数个数, 及其所占的位数
- * ABC:  8+9+9
- * ABx:  8+18
- * AsBx: 8+18
- * Ax:   26
- */
 func (self Instruction) ABC() (a, b, c int) {
 	a = int(self >> 6 & 0xff)
 	c = int(self >> 14 & 0x1ff)
